@@ -1,0 +1,20 @@
+version: "3"
+services:
+  application:
+    image: spring-boot-mysql-docker-compose-image
+    ports:
+      - "8080:2525"
+    networks:
+      - niranjana-network
+    depends_on:
+      - localhost
+    
+  localhost:
+    image: mysql:8.0
+    networks:
+      - niranjana-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=projecteidiko
+networks:
+  niranjana-network:
